@@ -6,6 +6,7 @@ import type {
   Global,
   HomePage,
   Locale,
+  Product,
   RentalItem,
   StrapiDocument,
   StrapiPagination,
@@ -75,7 +76,7 @@ export function getRentalItems(locale: Locale, options: CollectionOptions = {}) 
   return fetchCollection<RentalItem>('rental-items', {
     locale,
     sort,
-    populate: 'images',
+    populate: 'images,specs',
     pagination: { page, pageSize },
   });
 }
@@ -110,6 +111,18 @@ export function getTattooArtists(locale: Locale, options: CollectionOptions = {}
     locale,
     sort,
     populate: 'portfolio',
+    pagination: { page, pageSize },
+  });
+}
+
+/* --------------------------------- Store ---------------------------------- */
+
+export function getProducts(locale: Locale, options: CollectionOptions = {}) {
+  const { page = 1, pageSize = DEFAULT_PAGE_SIZE, sort = 'createdAt:desc' } = options;
+  return fetchCollection<Product>('products', {
+    locale,
+    sort,
+    populate: 'images',
     pagination: { page, pageSize },
   });
 }

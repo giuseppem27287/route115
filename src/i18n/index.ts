@@ -21,6 +21,17 @@ export type TranslationKey = Leaves<(typeof it)>;
 
 export type TranslationValues = Record<string, string | number>;
 
+/** A piece of brand content available in both locales (timeline, crew, styles…). */
+export interface Localized {
+  it: string;
+  en: string;
+}
+
+/** Picks the localized variant for the active language. */
+export function pick(lang: keyof Localized, value: Localized): string {
+  return value[lang];
+}
+
 /** Resolves `it.events.title` style keys against a dictionary. */
 export function translate(
   dictionary: Dictionary,

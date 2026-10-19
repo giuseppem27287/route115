@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 /* Class-based dark mode (the app ships dark by default, .dark kept for future theming) */
@@ -6,14 +6,19 @@
 
 /* ---------------------------------------------------------------------------
    Route 115 — Dark Mode Industrial Biker palette
-   coal (backgrounds) · steel (borders/surfaces) · chrome (text)
-   rust (primary accent) · brass (secondary accent)
+   coal (backgrounds) · steel (surfaces/borders) · chrome (secondary text)
+   chalk (primary text) · rust (deep accent) · ignition (hot accent)
+   brass (gold accent — barber/vintage)
 --------------------------------------------------------------------------- */
 @theme {
-  --color-coal-950: #08080a;
-  --color-coal-900: #0d0e10;
-  --color-coal-800: #141518;
-  --color-coal-700: #1c1e22;
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
+  --font-condensed: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --color-coal-950: #0d0d0d;
+  --color-coal-900: #121212;
+  --color-coal-800: #1a1a1a;
+  --color-coal-700: #242424;
 
   --color-steel-700: #26282e;
   --color-steel-600: #3a3d45;
@@ -23,19 +28,24 @@
   --color-chrome-200: #c9cdd4;
   --color-chrome-100: #e8eaee;
 
+  --color-chalk-50: #f5f5f5;
+
   --color-rust-700: #9c3517;
   --color-rust-600: #c4431f;
   --color-rust-500: #e2542b;
   --color-rust-400: #f07048;
 
+  --color-ignition-600: #e04a00;
+  --color-ignition-500: #ff5500;
+  --color-ignition-400: #ff7a33;
+
+  --color-brass-600: #a87a22;
   --color-brass-500: #c2912f;
   --color-brass-400: #d9a441;
 
-  --font-display: 'Archivo Black', 'Arial Black', sans-serif;
-  --font-condensed: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-
   --animate-preloader: preloader 1.2s ease-in-out infinite;
+  --animate-flicker: flicker 2.2s infinite;
+  --animate-logo-flicker: logo-flicker 2.4s infinite;
 
   @keyframes preloader {
     0%,
@@ -46,34 +56,125 @@
       transform: translateX(100%);
     }
   }
+
+  @keyframes flicker {
+    0%,
+    19%,
+    21%,
+    23%,
+    25%,
+    54%,
+    56%,
+    100% {
+      opacity: 1;
+      text-shadow:
+        0 0 8px rgba(255, 85, 0, 0.9),
+        0 0 22px rgba(255, 42, 0, 0.7),
+        0 0 44px rgba(255, 85, 0, 0.5);
+    }
+    20%,
+    24%,
+    55% {
+      opacity: 0.35;
+      text-shadow: none;
+    }
+  }
+
+  @keyframes logo-flicker {
+    0%,
+    19%,
+    21%,
+    23%,
+    25%,
+    54%,
+    56%,
+    100% {
+      opacity: 1;
+      filter: drop-shadow(0 0 12px rgba(255, 85, 0, 0.85)) drop-shadow(0 0 30px rgba(255, 42, 0, 0.5));
+    }
+    20%,
+    24%,
+    55% {
+      opacity: 0.45;
+      filter: none;
+    }
+  }
 }
 
 @layer base {
   html {
     color-scheme: dark;
+    height: 100%;
   }
 
   body {
+    min-height: 100%;
     background-color: var(--color-coal-950);
-    color: var(--color-chrome-100);
+    color: var(--color-chalk-50);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
 
   ::selection {
-    background-color: var(--color-rust-500);
-    color: var(--color-coal-950);
+    background: var(--color-ignition-500);
+    color: #000;
+  }
+
+  /* Slim, hidden-until-hover scrollbar (Figma Make behaviour) */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 999px;
+  }
+  *:hover::-webkit-scrollbar-thumb {
+    background: #333;
   }
 }
 
 @layer utilities {
-  /* Film-grain overlay — requires `relative` on the parent */
-  .grain::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('./assets/noise.svg');
-    opacity: 0.06;
-    pointer-events: none;
+  /* Angled "slash" cuts for buttons */
+  .slash-r {
+    clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+  }
+  .slash-l {
+    clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .slash-both {
+    clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+  }
+
+  /* Hot ignition glow on hover */
+  .glow-orange {
+    box-shadow: 0 0 0 rgba(255, 85, 0, 0);
+    transition:
+      box-shadow 0.25s ease,
+      transform 0.2s ease;
+  }
+  .glow-orange:hover {
+    box-shadow: 0 0 28px -4px rgba(255, 85, 0, 0.75);
+  }
+
+  /* Outlined display text */
+  .text-stroke {
+    -webkit-text-stroke: 1.5px rgba(245, 245, 245, 0.25);
+    color: transparent;
+  }
+
+  /* Scanline / film grain overlay — drop on an absolutely positioned div */
+  .grain {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.015) 0px,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 1px,
+      transparent 3px
+    );
   }
 }
