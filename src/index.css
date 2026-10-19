@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+/* Class-based dark mode (the app ships dark by default, .dark kept for future theming) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Route 115 — Dark Mode Industrial Biker palette
+   coal (backgrounds) · steel (borders/surfaces) · chrome (text)
+   rust (primary accent) · brass (secondary accent)
+--------------------------------------------------------------------------- */
+@theme {
+  --color-coal-950: #08080a;
+  --color-coal-900: #0d0e10;
+  --color-coal-800: #141518;
+  --color-coal-700: #1c1e22;
+
+  --color-steel-700: #26282e;
+  --color-steel-600: #3a3d45;
+  --color-steel-400: #7c818c;
+  --color-steel-300: #9aa0ab;
+
+  --color-chrome-200: #c9cdd4;
+  --color-chrome-100: #e8eaee;
+
+  --color-rust-700: #9c3517;
+  --color-rust-600: #c4431f;
+  --color-rust-500: #e2542b;
+  --color-rust-400: #f07048;
+
+  --color-brass-500: #c2912f;
+  --color-brass-400: #d9a441;
+
+  --font-display: 'Archivo Black', 'Arial Black', sans-serif;
+  --font-condensed: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --animate-preloader: preloader 1.2s ease-in-out infinite;
+
+  @keyframes preloader {
+    0%,
+    100% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-coal-950);
+    color: var(--color-chrome-100);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-rust-500);
+    color: var(--color-coal-950);
+  }
+}
+
+@layer utilities {
+  /* Film-grain overlay — requires `relative` on the parent */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('./assets/noise.svg');
+    opacity: 0.06;
+    pointer-events: none;
+  }
+}

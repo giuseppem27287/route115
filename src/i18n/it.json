@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "home": "Home",
+    "events": "Eventi",
+    "rental": "Noleggio",
+    "garage": "Garage",
+    "barber": "Barber",
+    "tattoo": "Tattoo",
+    "menu": "Menu",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu"
+  },
+  "common": {
+    "loading": "Caricamento in corso…",
+    "error": "Qualcosa è andato storto.",
+    "retry": "Riprova",
+    "empty": "Nessun contenuto disponibile.",
+    "close": "Chiudi",
+    "backToHome": "Torna alla home",
+    "learnMore": "Scopri di più",
+    "fromPrice": "A partire da"
+  },
+  "header": {
+    "tagline": "Garage · Noleggio · Barber · Tattoo",
+    "skipToContent": "Vai al contenuto"
+  },
+  "footer": {
+    "tagline": "La strada chiama. Noi rispondiamo.",
+    "rights": "Tutti i diritti riservati."
+  },
+  "preloader": {
+    "label": "Route 115 in avviamento…"
+  },
+  "home": {
+    "title": "Route 115",
+    "subtitle": "Garage, noleggio, barber e tattoo. Un solo fermo sulla strada.",
+    "intro": "Un punto di riferimento per chi vive la strada: officina, motonoleggio, barber shop e studio tatuaggi sotto lo stesso tetto.",
+    "ctaEvents": "Prossimi eventi",
+    "ctaRental": "Noleggia una moto",
+    "gaugeLabel": "chilometri",
+    "loading": "Caricamento della home…",
+    "error": "Impossibile caricare la home. È Strapi attivo su localhost:1337?"
+  },
+  "events": {
+    "title": "Eventi",
+    "subtitle": "Ride-in, raduni e serate speciali sulla Route 115.",
+    "empty": "Nessun evento programmato. Torna presto.",
+    "dateLabel": "Data",
+    "locationLabel": "Luogo",
+    "loading": "Caricamento eventi…",
+    "error": "Impossibile caricare gli eventi.",
+    "detailsTitle": "Dettagli evento"
+  },
+  "rental": {
+    "title": "Noleggio",
+    "subtitle": "Moto e attrezzatura per chi vuole solo guidare.",
+    "empty": "Nessun mezzo disponibile al momento.",
+    "priceLabel": "al giorno",
+    "available": "Disponibile",
+    "unavailable": "Non disponibile",
+    "loading": "Caricamento del noleggio…",
+    "error": "Impossibile caricare gli articoli di noleggio."
+  },
+  "garage": {
+    "title": "Garage",
+    "subtitle": "Assistenza, tagliandi e custom. La tua moto in mani esperte.",
+    "empty": "Nessun servizio disponibile.",
+    "priceLabel": "Prezzo",
+    "loading": "Caricamento dei servizi…",
+    "error": "Impossibile caricare i servizi garage."
+  },
+  "barber": {
+    "title": "Barber",
+    "subtitle": "Taglio, barba e cura. Stile da strada, finitura da barbiere.",
+    "empty": "Nessun servizio disponibile.",
+    "priceLabel": "Prezzo",
+    "durationLabel": "Durata",
+    "minutes": "min",
+    "loading": "Caricamento dei servizi…",
+    "error": "Impossibile caricare i servizi barber."
+  },
+  "tattoo": {
+    "title": "Tattoo",
+    "subtitle": "Artisti ospiti e residenti. Il tuo prossimo tatuaggio parte da qui.",
+    "empty": "Nessun artista al momento.",
+    "stylesLabel": "Stili",
+    "portfolioLabel": "Portfolio",
+    "loading": "Caricamento degli artisti…",
+    "error": "Impossibile caricare gli artisti tattoo."
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "subtitle": "Questa strada non porta da nessuna parte.",
+    "cta": "Torna alla home"
+  }
+}
